@@ -1,0 +1,1 @@
+export default function Loading() { return <div role="status" className="space-y-4"><p>입주노트를 불러오는 중이에요…</p>{[1, 2, 3].map(key => <div key={key} className="h-28 animate-pulse rounded-2xl bg-muted" />)}</div>; }
