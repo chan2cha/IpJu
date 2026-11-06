@@ -79,8 +79,24 @@ Supabase 계정 연결 후 기존 DB 구조와 인증 설정을 먼저 확인하
 
 운영 DB 변경은 버전 관리된 SQL migration으로 수행합니다. Preview가 운영 데이터를 수정하지 않도록 별도 개발 Supabase 프로젝트 또는 명확히 분리한 환경을 사용합니다.
 
+## 모바일 설치 배포 후 확인
+
+PWA 관련 파일도 GitHub에 커밋하고 Vercel 배포 완료를 확인합니다. 홈 또는 설정 화면에 설치 안내가 나타나야 합니다.
+
+1. 실제 HTTPS 배포 주소에서 `/manifest.webmanifest`, `/icons/icon-192.png`, `/icons/icon-512.png`, `/icons/apple-touch-icon.png`가 열리는지 확인합니다.
+2. Android Chrome에서 사이트를 방문하고 앱 설치 버튼 또는 브라우저 메뉴로 설치합니다.
+3. iPhone Safari에서 공유 → 홈 화면에 추가를 선택합니다.
+4. 홈 화면 아이콘이 새싹으로 표시되는지, 아이콘으로 열었을 때 입주노트 홈 화면이 앱 모드로 실행되는지 확인합니다.
+5. 설치된 앱에서 네 탭과 상품 비교 화면을 탐색합니다. 네트워크 연결이 필요하며 현재 데이터는 영구 저장되지 않습니다.
+
+배포를 보호하는 Vercel 인증 화면이 있다면 먼저 실제 사용자가 사이트에 접근 가능한지 확인하세요. Preview 인증 화면을 앱으로 설치하지 않도록 최종 운영 URL을 사용합니다. 설치 버튼은 브라우저 조건에 따라 표시되지 않을 수 있어 수동 설치 안내를 함께 제공합니다.
+
+설치 메타데이터와 UI는 로컬 테스트를 통과했지만, 실기기 설치 검증과 이번 변경의 원격 배포는 수행하지 않았습니다.
+
 ## 참고 문서
 
 - [GitHub 저장소를 Vercel에 연결](https://vercel.com/docs/git/vercel-for-github)
 - [Vercel Node.js 버전](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions)
 - [Supabase 서버 세션 인증](https://supabase.com/docs/guides/auth/server-side)
+- [Next.js PWA 가이드](https://nextjs.org/docs/app/guides/progressive-web-apps)
+- [MDN PWA 설치 요건](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable)
